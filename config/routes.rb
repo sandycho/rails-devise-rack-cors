@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   # PRUEBAS CORS
   get 'application/getUser'
-  get 'application/helloUnknown'
+  get 'application/getUnknownUser'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
