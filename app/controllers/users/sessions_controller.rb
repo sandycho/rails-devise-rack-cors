@@ -1,11 +1,11 @@
 class Users::SessionsController < Devise::SessionsController
-  respond_to :json, :html
+  #respond_to :json
 # before_filter :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource/sign_in
   # def create

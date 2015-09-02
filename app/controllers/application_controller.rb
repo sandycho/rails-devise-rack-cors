@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
   before_action :authenticate_user!, except: [:home, :getUnknownUser]
   
-  respond_to :json
+  respond_to :json, :html
   def home
   end
   
@@ -21,6 +21,9 @@ class ApplicationController < ActionController::Base
   
   # GET 'helloUnknown'
   def getUnknownUser
-    render json: "{'data'=> 'helloUnknown'}"
+    #render json: { data:  current_user.email }.to_json
+    respond_to do |format|
+       format.json  { render json: { data:  'Hello UnknownUser' }.to_json }
+     end
   end
 end
