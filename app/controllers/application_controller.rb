@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
        format.json  { render json: { data:  'Hello UnknownUser' }.to_json }
      end
   end
+  
+  def after_sign_in_path_for(resource)
+    '/application/getUser' 
+  end
 end
