@@ -31,12 +31,22 @@ module Workspace
     #   end
     # end
     
-    # https://www.owasp.org/index.php?title=Ruby_on_Rails_Cheatsheet&setlang=es#Cross_Origin_Resource_Sharing
-    config.middleware.use Rack::Cors do
+    # https://gist.github.com/AdrianTeh/3561310
+    config.middleware.insert_before Warden::Manager, Rack::Cors do
       allow do
-        origins 'someserver.example.com'
-        resource %r{/users/\d+.json}, :headers => ['Origin', 'Accept', 'Content-Type'], :methods => [:post, :get, :options]
+        origins '*'
+        resource '*',
+        :headers => :any,
+        :methods => [:get, :post, :options]
       end
     end
+    
+    # https://www.owasp.org/index.php?title=Ruby_on_Rails_Cheatsheet&setlang=es#Cross_Origin_Resource_Sharing
+    # config.middleware.use Rack::Cors do
+    #   allow do
+    #     origins '*'
+    #     resource %r{/users/\d+.json}, :headers => ['Origin', 'Accept', 'Content-Type'], :methods => [:post, :get, :options]
+    #   end
+    # end
   end
 end
